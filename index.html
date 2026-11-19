@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-   <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centro de Estudios UMANA | Apoyo Escolar y Académico en San Juan</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
@@ -1770,6 +1770,322 @@ a {
     }
 }
 
+/* =========================================================
+   PEDIR TURNO (formulario → WhatsApp)
+   ========================================================= */
+.booking {
+    background-color: var(--paper);
+    scroll-margin-top: 80px;
+}
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.booking-info .section-heading {
+    margin-bottom: 28px;
+}
+
+.booking-steps {
+    list-style: none;
+    display: grid;
+    gap: 18px;
+    counter-reset: paso;
+}
+
+.booking-steps li {
+    counter-increment: paso;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.booking-steps li::before {
+    content: counter(paso);
+    flex: 0 0 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--mustard);
+    color: #fff;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+}
+
+.booking-steps strong {
+    display: block;
+    color: var(--ink);
+    font-size: 1.02rem;
+}
+
+.booking-card {
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--mustard);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--shadow-lg);
+}
+
+.booking-card fieldset {
+    border: 0;
+    min-width: 0;
+}
+
+.booking-field {
+    margin-bottom: 20px;
+}
+
+.booking-field > label,
+.booking-field > legend {
+    display: block;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+    padding: 0;
+}
+
+.booking-field input[type="text"],
+.booking-field input[type="tel"],
+.booking-field textarea {
+    width: 100%;
+    font: inherit;
+    color: var(--text);
+    background: #fff;
+    border: 2px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    transition: var(--transition);
+}
+
+.booking-field input[type="text"]:focus,
+.booking-field input[type="tel"]:focus,
+.booking-field textarea:focus {
+    outline: 3px solid rgba(255, 106, 0, 0.28);
+    border-color: var(--mustard);
+}
+
+.booking-field textarea {
+    resize: vertical;
+}
+
+.booking-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.booking-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.booking-chips label {
+    position: relative;
+    margin: 0;
+}
+
+.booking-chips input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+}
+
+.booking-chips span {
+    display: inline-block;
+    padding: 10px 16px;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.booking-chips span:hover {
+    background: var(--pine-light);
+}
+
+.booking-chips input:checked + span {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--mustard);
+    box-shadow: 0 0 0 2px var(--mustard);
+}
+
+.booking-chips input:checked + span::before {
+    content: "✓ ";
+    color: var(--mustard-light);
+    font-weight: 800;
+}
+
+.booking-chips input:focus-visible + span {
+    outline: 3px solid var(--mustard);
+    outline-offset: 2px;
+}
+
+.booking-error {
+    color: #b3261e;
+    font-size: 0.9rem;
+    font-weight: 600;
+    min-height: 1.3em;
+    margin-bottom: 8px;
+}
+
+.booking-submit {
+    width: 100%;
+    padding: 16px 30px;
+    font-size: 1.02rem;
+}
+
+.booking-note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 12px;
+}
+
+.booking-ok {
+    display: none;
+    text-align: center;
+}
+
+.booking-ok h3 {
+    font-size: 1.8rem;
+    color: var(--ink);
+    margin-bottom: 6px;
+}
+
+.booking-ok p {
+    color: var(--text-muted);
+    margin-bottom: 14px;
+}
+
+.booking-ok pre {
+    white-space: pre-wrap;
+    text-align: left;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    font: inherit;
+    font-size: 0.92rem;
+    margin-bottom: 16px;
+}
+
+.booking-ok-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+}
+
+.btn-outline:hover {
+    background: var(--pine-light);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .booking-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .booking-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .booking-card {
+        padding: 22px 18px;
+    }
+}
+
+/* =========================================================
+   PRECIOS: selector de modalidad (CSS puro)
+   ========================================================= */
+.pricing-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+}
+
+.pricing-modes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: -24px 0 36px;
+}
+
+.pricing-modes label span {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.pricing-modes label span:hover {
+    background: var(--pine-light);
+}
+
+.pricing-grid [class^="p-"] {
+    display: none;
+}
+
+#mod-online:checked ~ .pricing-grid .p-online,
+#mod-profe:checked ~ .pricing-grid .p-profe,
+#mod-biblio:checked ~ .pricing-grid .p-biblio,
+#mod-alumno:checked ~ .pricing-grid .p-alumno {
+    display: inline;
+}
+
+#mod-online:checked ~ .pricing-modes label[for="mod-online"] span,
+#mod-profe:checked ~ .pricing-modes label[for="mod-profe"] span,
+#mod-biblio:checked ~ .pricing-modes label[for="mod-biblio"] span,
+#mod-alumno:checked ~ .pricing-modes label[for="mod-alumno"] span {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--mustard);
+    box-shadow: 0 0 0 2px var(--mustard);
+}
+
+#mod-online:focus-visible ~ .pricing-modes label[for="mod-online"] span,
+#mod-profe:focus-visible ~ .pricing-modes label[for="mod-profe"] span,
+#mod-biblio:focus-visible ~ .pricing-modes label[for="mod-biblio"] span,
+#mod-alumno:focus-visible ~ .pricing-modes label[for="mod-alumno"] span {
+    outline: 3px solid var(--mustard);
+    outline-offset: 2px;
+}
+
 /* Accesibilidad: foco visible y respeto por reduced-motion */
 a:focus-visible, summary:focus-visible, label:focus-visible {
     outline: 2px solid var(--mustard);
@@ -1809,6 +2125,7 @@ a:focus-visible, summary:focus-visible, label:focus-visible {
                 <a href="#materias">Materias</a>
                 <a href="#ingresos">Ingresos</a>
                 <a href="#precios">Precios</a>
+                <a href="#turnos">Pedir turno</a>
 
                 <!-- Enlace al Plan Continuidad -->
                 <label for="toggle-plan-continuidad" class="nav-plan-link">
@@ -2604,6 +2921,16 @@ a:focus-visible, summary:focus-visible, label:focus-visible {
                         Valores expresados en pesos argentinos.
                     </p>
                 </div>
+                <input type="radio" name="pricing-mod" id="mod-online" class="pricing-radio" checked>
+                <input type="radio" name="pricing-mod" id="mod-profe" class="pricing-radio">
+                <input type="radio" name="pricing-mod" id="mod-biblio" class="pricing-radio">
+                <input type="radio" name="pricing-mod" id="mod-alumno" class="pricing-radio">
+                <div class="pricing-modes" role="group" aria-label="Elegí la modalidad">
+                    <label for="mod-online"><span>Online</span></label>
+                    <label for="mod-profe"><span>Domicilio del profe</span></label>
+                    <label for="mod-biblio"><span>Biblioteca</span></label>
+                    <label for="mod-alumno"><span>Domicilio del alumno</span></label>
+                </div>
                 <div class="pricing-grid">
                     <article class="price-card paper-card">
                         <h3>
@@ -2615,19 +2942,28 @@ a:focus-visible, summary:focus-visible, label:focus-visible {
                         <div class="price-list">
                             <div>
                                 <span>Primario</span>
-                                <strong>$56.880</strong>
+                                <strong class="p-online">$64.800</strong>
+                                <strong class="p-profe">$64.800</strong>
+                                <strong class="p-biblio">$84.800</strong>
+                                <strong class="p-alumno">$88.800</strong>
                             </div>
                             <div>
                                 <span>Secundario</span>
-                                <strong>$63.360</strong>
+                                <strong class="p-online">$72.000</strong>
+                                <strong class="p-profe">$72.000</strong>
+                                <strong class="p-biblio">$92.000</strong>
+                                <strong class="p-alumno">$96.000</strong>
                             </div>
                             <div>
                                 <span>Universitario</span>
-                                <strong>$69.120</strong>
+                                <strong class="p-online">$79.200</strong>
+                                <strong class="p-profe">$79.200</strong>
+                                <strong class="p-biblio">$99.200</strong>
+                                <strong class="p-alumno">$103.200</strong>
                             </div>
                         </div>
-                        <a href="#contacto">
-                            Consultar →
+                        <a href="#turnos">
+                            Pedir turno →
                         </a>
                     </article>
                     <article class="price-card popular paper-card">
@@ -2643,19 +2979,28 @@ a:focus-visible, summary:focus-visible, label:focus-visible {
                         <div class="price-list">
                             <div>
                                 <span>Primario</span>
-                                <strong>$80.580</strong>
+                                <strong class="p-online">$91.800</strong>
+                                <strong class="p-profe">$91.800</strong>
+                                <strong class="p-biblio">$121.800</strong>
+                                <strong class="p-alumno">$127.800</strong>
                             </div>
                             <div>
                                 <span>Secundario</span>
-                                <strong>$89.760</strong>
+                                <strong class="p-online">$102.000</strong>
+                                <strong class="p-profe">$102.000</strong>
+                                <strong class="p-biblio">$132.000</strong>
+                                <strong class="p-alumno">$138.000</strong>
                             </div>
                             <div>
                                 <span>Universitario</span>
-                                <strong>$97.920</strong>
+                                <strong class="p-online">$112.200</strong>
+                                <strong class="p-profe">$112.200</strong>
+                                <strong class="p-biblio">$142.200</strong>
+                                <strong class="p-alumno">$148.200</strong>
                             </div>
                         </div>
-                        <a href="#contacto">
-                            Consultar →
+                        <a href="#turnos">
+                            Pedir turno →
                         </a>
                     </article>
                     <article class="price-card paper-card">
@@ -2668,19 +3013,28 @@ a:focus-visible, summary:focus-visible, label:focus-visible {
                         <div class="price-list">
                             <div>
                                 <span>Primario</span>
-                                <strong>$101.120</strong>
+                                <strong class="p-online">$115.200</strong>
+                                <strong class="p-profe">$115.200</strong>
+                                <strong class="p-biblio">$155.200</strong>
+                                <strong class="p-alumno">$163.200</strong>
                             </div>
                             <div>
                                 <span>Secundario</span>
-                                <strong>$112.640</strong>
+                                <strong class="p-online">$128.000</strong>
+                                <strong class="p-profe">$128.000</strong>
+                                <strong class="p-biblio">$168.000</strong>
+                                <strong class="p-alumno">$176.000</strong>
                             </div>
                             <div>
                                 <span>Universitario</span>
-                                <strong>$122.880</strong>
+                                <strong class="p-online">$140.800</strong>
+                                <strong class="p-profe">$140.800</strong>
+                                <strong class="p-biblio">$180.800</strong>
+                                <strong class="p-alumno">$188.800</strong>
                             </div>
                         </div>
-                        <a href="#contacto">
-                            Consultar →
+                        <a href="#turnos">
+                            Pedir turno →
                         </a>
                     </article>
                     <article class="price-card paper-card">
@@ -2693,31 +3047,156 @@ a:focus-visible, summary:focus-visible, label:focus-visible {
                         <div class="price-list">
                             <div>
                                 <span>Primario</span>
-                                <strong>$7.900</strong>
+                                <strong class="p-online">$9.000</strong>
+                                <strong class="p-profe">$9.000</strong>
+                                <strong class="p-biblio">$11.500</strong>
+                                <strong class="p-alumno">$12.000</strong>
                             </div>
                             <div>
                                 <span>Secundario</span>
-                                <strong>$8.800</strong>
+                                <strong class="p-online">$10.000</strong>
+                                <strong class="p-profe">$10.000</strong>
+                                <strong class="p-biblio">$12.500</strong>
+                                <strong class="p-alumno">$13.000</strong>
                             </div>
                             <div>
                                 <span>Universitario</span>
-                                <strong>$9.600</strong>
+                                <strong class="p-online">$11.000</strong>
+                                <strong class="p-profe">$11.000</strong>
+                                <strong class="p-biblio">$13.500</strong>
+                                <strong class="p-alumno">$14.000</strong>
                             </div>
                         </div>
-                        <a href="#contacto">
-                            Consultar →
+                        <a href="#turnos">
+                            Pedir turno →
                         </a>
                     </article>
                 </div>
                 <div class="pricing-note">
-                    <strong>¿Necesitás otra modalidad?</strong>
+                    <strong>¿Cómo elegir?</strong>
                     <span>
-                        También contamos con opciones de biblioteca
-                        y domicilio. Consultanos para conocer los valores.
+                        Los valores cambian según la modalidad que elijas arriba.
+                        Si tenés dudas, consultanos y te ayudamos a armar el plan.
                     </span>
                 </div>
             </div>
         </section>
+        <!-- =====================================================
+             PEDIR TURNO
+        ====================================================== -->
+        <section class="section booking" id="turnos">
+            <div class="container booking-grid">
+                <div class="booking-info">
+                    <div class="section-heading">
+                        <span class="eyebrow">
+                            PEDÍ TU CLASE
+                        </span>
+                        <h2>
+                            Reservá tu turno de apoyo
+                        </h2>
+                        <p>
+                            Completá el formulario y te respondemos por WhatsApp
+                            para coordinar día, horario y profesor.
+                        </p>
+                    </div>
+                    <ol class="booking-steps">
+                        <li>
+                            <div>
+                                <strong>Completá tus datos</strong>
+                                Nivel, materia, modalidad y los turnos que te quedan cómodos.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>Se abre WhatsApp</strong>
+                                Tu pedido llega listo para enviar, sin escribir nada más.
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>Coordinamos con tu profe</strong>
+                                Te confirmamos el horario y el plan que mejor te convenga.
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <div>
+                    <form class="booking-card" id="turnoForm" novalidate>
+                        <div class="booking-field">
+                            <label for="turno-nombre">Nombre y apellido del alumno</label>
+                            <input type="text" id="turno-nombre" autocomplete="name" placeholder="Ej: Martina Pérez">
+                        </div>
+
+                        <div class="booking-field">
+                            <label for="turno-tel">Tu número de WhatsApp</label>
+                            <input type="tel" id="turno-tel" inputmode="tel" autocomplete="tel" placeholder="Ej: 264 555 5555">
+                        </div>
+
+                        <fieldset class="booking-field">
+                            <legend>Nivel</legend>
+                            <div class="booking-chips">
+                                <label><input type="radio" name="turno-nivel" value="Primario"><span>Primario</span></label>
+                                <label><input type="radio" name="turno-nivel" value="Secundario"><span>Secundario</span></label>
+                                <label><input type="radio" name="turno-nivel" value="Universitario"><span>Universitario</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="booking-field">
+                            <label for="turno-materia">Materia o tema</label>
+                            <input type="text" id="turno-materia" placeholder="Ej: Matemática, Física, Contabilidad…">
+                        </div>
+
+                        <fieldset class="booking-field">
+                            <legend>Modalidad</legend>
+                            <div class="booking-chips">
+                                <label><input type="radio" name="turno-modalidad" value="Online"><span>Online</span></label>
+                                <label><input type="radio" name="turno-modalidad" value="Biblioteca"><span>Biblioteca</span></label>
+                                <label><input type="radio" name="turno-modalidad" value="Domicilio del alumno"><span>A domicilio (en mi casa)</span></label>
+                                <label><input type="radio" name="turno-modalidad" value="Domicilio del profe"><span>Domicilio del profe</span></label>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="booking-field">
+                            <legend>Turno disponible (podés elegir varios)</legend>
+                            <div class="booking-chips">
+                                <label><input type="checkbox" name="turno-franja" value="Mañana"><span>Mañana</span></label>
+                                <label><input type="checkbox" name="turno-franja" value="Siesta"><span>Siesta</span></label>
+                                <label><input type="checkbox" name="turno-franja" value="Tarde"><span>Tarde</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="booking-field">
+                            <label for="turno-dias">Días que te vienen bien</label>
+                            <input type="text" id="turno-dias" placeholder="Ej: Lunes y miércoles">
+                        </div>
+
+                        <div class="booking-field">
+                            <label for="turno-coment">Algo más que quieras contarnos (opcional)</label>
+                            <textarea id="turno-coment" rows="3" placeholder="Ej: tengo examen el 5 de diciembre"></textarea>
+                        </div>
+
+                        <div class="booking-error" id="turnoError" role="alert"></div>
+                        <button type="submit" class="btn btn-primary booking-submit">
+                            Enviar pedido por WhatsApp
+                        </button>
+                        <p class="booking-note">Se abrirá WhatsApp con tu pedido listo para enviar.</p>
+                    </form>
+
+                    <div class="booking-card booking-ok" id="turnoOk">
+                        <h3>¡Listo!</h3>
+                        <p>Si WhatsApp no se abrió, usá el botón o copiá este mensaje y enviáselo al Centro.</p>
+                        <pre id="turnoMsg"></pre>
+                        <div class="booking-ok-actions">
+                            <a class="btn btn-primary" id="turnoWa" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a>
+                            <button type="button" class="btn btn-outline" id="turnoCopiar">Copiar mensaje</button>
+                            <button type="button" class="btn btn-outline" id="turnoOtro">Hacer otro pedido</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- =====================================================
              METODOLOGIA
         ====================================================== -->
@@ -3081,5 +3560,89 @@ a:focus-visible, summary:focus-visible, label:focus-visible {
             Consultar
         </span>
     </a>
+
+    <!-- =====================================================
+         PEDIR TURNO: arma el mensaje y abre WhatsApp
+    ====================================================== -->
+    <script>
+    (function () {
+        // Número de WhatsApp del Centro (549 + código de área + número, sin signos).
+        var WHATSAPP = "5492646280182";
+
+        var $ = function (id) { return document.getElementById(id); };
+        var val = function (n) {
+            var r = document.querySelector('input[name="' + n + '"]:checked');
+            return r ? r.value : "";
+        };
+        var vals = function (n) {
+            return Array.prototype.map.call(
+                document.querySelectorAll('input[name="' + n + '"]:checked'),
+                function (e) { return e.value; }
+            );
+        };
+
+        var form = $("turnoForm");
+        if (!form) return;
+
+        function armarMensaje() {
+            var l = ["Hola UMANA! Quiero pedir una clase de apoyo.", ""];
+            l.push("Alumno: " + $("turno-nombre").value.trim());
+            l.push("WhatsApp: " + $("turno-tel").value.trim());
+            l.push("Nivel: " + val("turno-nivel"));
+            l.push("Materia: " + $("turno-materia").value.trim());
+            l.push("Modalidad: " + val("turno-modalidad"));
+            l.push("Turno: " + vals("turno-franja").join(", "));
+            l.push("Días: " + $("turno-dias").value.trim());
+            var c = $("turno-coment").value.trim();
+            if (c) l.push("Comentarios: " + c);
+            return l.join("\n");
+        }
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            var faltan = [];
+            if (!$("turno-nombre").value.trim()) faltan.push("nombre");
+            if (!$("turno-tel").value.trim()) faltan.push("WhatsApp");
+            if (!val("turno-nivel")) faltan.push("nivel");
+            if (!$("turno-materia").value.trim()) faltan.push("materia");
+            if (!val("turno-modalidad")) faltan.push("modalidad");
+            if (!vals("turno-franja").length) faltan.push("turno");
+            if (!$("turno-dias").value.trim()) faltan.push("días");
+            if (faltan.length) {
+                $("turnoError").textContent = "Falta completar: " + faltan.join(", ") + ".";
+                return;
+            }
+            $("turnoError").textContent = "";
+
+            var msg = armarMensaje();
+            var url = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+            $("turnoMsg").textContent = msg;
+            $("turnoWa").href = url;
+            form.style.display = "none";
+            $("turnoOk").style.display = "block";
+            $("turnos").scrollIntoView({ behavior: "smooth", block: "start" });
+            window.open(url, "_blank");
+        });
+
+        $("turnoCopiar").addEventListener("click", function () {
+            var btn = $("turnoCopiar");
+            var txt = $("turnoMsg").textContent;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(txt).then(
+                    function () { btn.textContent = "¡Copiado!"; },
+                    function () { btn.textContent = "Seleccioná y copiá el texto"; }
+                );
+            } else {
+                btn.textContent = "Seleccioná y copiá el texto";
+            }
+        });
+
+        $("turnoOtro").addEventListener("click", function () {
+            $("turnoOk").style.display = "none";
+            form.style.display = "block";
+            $("turnoCopiar").textContent = "Copiar mensaje";
+        });
+    })();
+    </script>
 </body>
 </html>
